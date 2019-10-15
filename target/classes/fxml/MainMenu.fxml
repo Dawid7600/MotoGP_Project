@@ -1,60 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #555555" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainMenu">
-   <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="motoGPLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Label text="Next race on:" textFill="#eeeeee">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="200.0" top="30.0" />
-               </HBox.margin></Label>
-            <Label fx:id="timeTillRace" text="{time}" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin></Label>
-            <Label text="Wyszukaj zawodnika" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="200.0" top="50.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="searchBox" onAction="#searchRaider">
-               <HBox.margin>
-                  <Insets left="10.0" top="50.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </HBox>
-   </top>
-   <center>
-      <TableView fx:id="raiderTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="firstName" prefWidth="233.0" text="Imie" />
-          <TableColumn fx:id="lastName" prefWidth="209.0" text="Nazwisko" />
-           <TableColumn fx:id="age" prefWidth="74.0" text="Wiek" />
-           <TableColumn fx:id="countyOfOrigin" prefWidth="219.0" text="Kraj pochodzenia" />
-           <TableColumn fx:id="winCount" prefWidth="219.0" text="Zwyciestwa" />
-            <TableColumn fx:id="seasons" prefWidth="325.0" text="Sezony" />
-        </columns>
-      </TableView>
-   </center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainMenu">
+   <children>
+      <!-- raiders Button -->
+      <ImageView fx:id="raidersButton" fitHeight="260.0" fitWidth="346.0" layoutX="175.0" layoutY="230.0" onMouseClicked="#changeScene" onMouseEntered="#increaseRaidersSize" onMouseExited="#decreaseRaidersSize" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="raidersLabel" layoutX="293.0" layoutY="508.0" text="Zawodnicy">
+         <font>
+            <Font name="Monospaced Bold" size="20.0" />
+         </font></Label>
+
+      <!-- tracks button -->
+      <ImageView fx:id="tracksButton" fitHeight="260.0" fitWidth="346.0" layoutX="785.0" layoutY="230.0" onMouseClicked="#changeScene" onMouseEntered="#increaseRaidersSize" onMouseExited="#decreaseRaidersSize" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="tracksLabel" layoutX="933.0" layoutY="508.0" text="Tory">
+         <font>
+            <Font name="Monospaced Bold" size="20.0" />
+         </font></Label>
+
+      <!-- close button -->
+      <ImageView fx:id="closeButton" fitHeight="93.0" fitWidth="109.0" layoutX="1131.0" layoutY="14.0" onMouseClicked="#closeApplication" onMouseEntered="#increaseRaidersSize" onMouseExited="#decreaseRaidersSize" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

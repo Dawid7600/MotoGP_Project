@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #555555" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RaidersTable">
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="returnButton" fitHeight="77.0" fitWidth="86.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin></ImageView>
+            <ImageView fx:id="motoGPLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></ImageView>
+            <Label text="Next race on:" textFill="#eeeeee">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="120.0" top="30.0" />
+               </HBox.margin></Label>
+            <Label fx:id="timeTillRace" text="{time}" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin></Label>
+            <Label text="Wyszukaj zawodnika" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="searchBox" onAction="#searchRaider">
+               <HBox.margin>
+                  <Insets left="10.0" top="50.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <TableView fx:id="raiderTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="firstName" prefWidth="233.0" text="Imie" />
+          <TableColumn fx:id="lastName" prefWidth="209.0" text="Nazwisko" />
+           <TableColumn fx:id="age" prefWidth="74.0" text="Wiek" />
+           <TableColumn fx:id="countyOfOrigin" prefWidth="219.0" text="Kraj pochodzenia" />
+           <TableColumn fx:id="winCount" prefWidth="219.0" text="Zwyciestwa" />
+            <TableColumn fx:id="seasons" prefWidth="325.0" text="Sezony" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

@@ -1,134 +1,114 @@
-///Insert into Raiders (FirstName, LastName, Age, CountyOfOrigin, WinCount, Seasons) VALUES
 package Controllers;
 
-import Database.DBConnector;
-import Model.Raider;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import application.MainApp;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.IOException;
 
 public class MainMenu {
-    @FXML
-    public Label timeTillRace;
-    @FXML
-    TableView<Raider> raiderTableView;
-    @FXML
-    TableColumn<Raider, String> firstName;
-    @FXML
-    TableColumn<Raider, String> lastName;
-    @FXML
-    TableColumn<Raider, String> age;
-    @FXML
-    TableColumn<Raider, String> countyOfOrigin;
-    @FXML
-    TableColumn<Raider, String> winCount;
-    @FXML
-    TableColumn<Raider, String> seasons;
+
+    private String currentButton = "";
 
     @FXML
-
-    ImageView motoGPLogo;
+    public ImageView raidersButton;
+    @FXML
+    public Label raidersLabel;
 
     @FXML
-    TextField searchBox;
-
-    private ObservableList<Raider> data = FXCollections.observableArrayList();
-    private ResultSet raiderRS;
+    public ImageView tracksButton;
     @FXML
-    /**
-     * Metoda wywolywana przy tworzeniu okna
-     */
-    public void initialize(){
-        motoGPLogo.setImage(new Image(String.valueOf(this.getClass().getResource("/images/motogp_logo.png"))));
-        //Ustawienie dnia nastepnego wyscigu
-        try {
-            ResultSet nextRace =  DBConnector.connect().createResultSet("Select * from race_dates");
-            while(nextRace.next()){
-                timeTillRace.setText(nextRace.getString("nextRace"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        setDataTable(raiderRS);
+    public Label tracksLabel;
+
+    @FXML
+    public ImageView closeButton;
+
+
+    @FXML
+    public Label closeLabel;
+
+    @FXML
+    public void initialize() {
+        Image image = new Image(this.getClass().getResource("/images/motocycle_icon.png").toString());
+        raidersButton.setImage(image);
+
+        image = new Image(this.getClass().getResource("/images/track_icon.png").toString());
+        tracksButton.setImage(image);
+
+        image = new Image(this.getClass().getResource("/images/close_icon.png").toString());
+        closeButton.setImage(image);
 
 
     }
 
-    /**
-     * Metoda wszukująca danego uzytkownika na podstawie wartosci zapisanej w searchBox'ie
-     * @throws SQLException wyrzucany podczas bledu z polaczeniem z baza
-     */
-    @FXML
-    public void searchRaider() throws SQLException {
-        data.clear();
-        String raiderName = searchBox.getText();
-        if(raiderName.equals("")){
-            ResultSet defaultOption = DBConnector.connect().createResultSet("Select * from raiders");
-            setDataTable(defaultOption);
-        }else{
-            ResultSet raider = DBConnector.connect().createResultSet("Select * from raiders where FirstName ='" + raiderName + "'");
-            while(raider.next()){
-                data.add(new Raider(raider));
-            }
-            //column name + value from the class
-            firstName.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("firstName"));
-            lastName.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("lastName"));
-            age.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("age"));
-            countyOfOrigin.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("countryOfOrigin"));
-            winCount.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("wins"));
-            seasons.setCellValueFactory(
-                    new PropertyValueFactory<Raider, String>("seasons"));
-
-            raiderTableView.setItems(data);
+    public void changeScene(MouseEvent event) throws IOException {
+        String buttonPressed = event.getPickResult().getIntersectedNode().getId();
+        Parent parent;
+        switch (buttonPressed){
+            case("raidersButton"):
+                parent = FXMLLoader.load(this.getClass().getResource("/fxml/RaidersTable.fxml"));
+                break;
+            case("tracksButton"):
+                parent = FXMLLoader.load(this.getClass().getResource("/fxml/TracksMenu.fxml"));
+                break;
+            default:
+                parent = null;
+                break;
         }
-
+        MainApp.setRoot(parent);
     }
 
-    /**
-     * Metoda ktora analizuje zbior danych i na jej podstawie tworzy obiekty i przypisuje je do tablicy
-     * @param raiderRS analizowany zbior danych
-     */
-    private void setDataTable(ResultSet raiderRS){
-        try {
-            //ustawienie wartosci zawodnikow
 
-            raiderRS = DBConnector.connect().createResultSet("Select * From raiders");
-            while(raiderRS.next()){
-                data.add(new Raider(raiderRS));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public void increaseRaidersSize(MouseEvent event) {
+        event.getPickResult().getIntersectedNode().setScaleX(1.5);
+        event.getPickResult().getIntersectedNode().setScaleY(1.5);
+        currentButton = event.getPickResult().getIntersectedNode().getId();
+        switch (currentButton){
+            case ("raidersButton"):
+                raidersLabel.setVisible(false);
+                break;
+            case ("tracksButton"):
+                tracksLabel.setVisible(false);
+                break;
+            case ("closeButton"):
+                closeLabel.setVisible(false);
+                break;
         }
-        //column name + value from the class
-        firstName.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("firstName"));
-        lastName.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("lastName"));
-        age.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("age"));
-        countyOfOrigin.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("countryOfOrigin"));
-        winCount.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("wins"));
-        seasons.setCellValueFactory(
-                new PropertyValueFactory<Raider, String>("seasons"));
-
-        raiderTableView.setItems(data);
-
     }
+
+    public void decreaseRaidersSize() {
+        switch(currentButton){
+            case("raidersButton"):
+                raidersButton.setScaleX(1);
+                raidersButton.setScaleY(1);
+                currentButton = "";
+                raidersLabel.setVisible(true);
+                break;
+            case("tracksButton"):
+                tracksButton.setScaleY(1);
+                tracksButton.setScaleX(1);
+                currentButton = "";
+                tracksLabel.setVisible(true);
+                break;
+
+            case("closeButton"):
+                closeButton.setScaleX(1);
+                closeButton.setScaleY(1);
+                currentButton = "";
+                closeLabel.setVisible(true);
+                break;
+
+        }
+    }
+
+    public void closeApplication() {
+        System.exit(0);
+    }
+
+
 }

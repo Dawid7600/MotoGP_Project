@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #999999" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TracksMenu">
+
+   
+   <children>
+      <ImageView fx:id="quatarTrack" fitHeight="190.0" fitWidth="280.0" layoutX="74.0" layoutY="40.0" onMouseClicked="#tourDetails" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="returnButton" fitHeight="51.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="149.0" layoutY="248.0" text="Losail">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="redbullTrack" fitHeight="190.0" fitWidth="280.0" layoutX="500.0" layoutY="40.0" onMouseClicked="#tourDetails" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="500.0" layoutY="248.0" text="Red Bull Ring">
+         <font>
+            <Font name="Monospaced Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="argentynaTrack" fitHeight="190.0" fitWidth="280.0" layoutX="906.0" layoutY="40.0" onMouseClicked="#tourDetails" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="855.0" layoutY="248.0" prefHeight="44.0" prefWidth="732.0" text="Autódromo Oscar Alfredo Gálvez">
+         <font>
+            <Font name="Monospaced Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="hiszpaniaTrack" fitHeight="190.0" fitWidth="280.0" layoutX="249.0" layoutY="377.0" onMouseClicked="#tourDetails" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="japoniaTrack" fitHeight="190.0" fitWidth="280.0" layoutX="711.0" layoutY="377.0" onMouseClicked="#tourDetails" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="185.0" layoutY="591.0" text="Circuit de Barcelona-Catalunya">
+         <font>
+            <Font name="Monospaced Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="657.0" layoutY="591.0" text="Fuji International Speedway">
+         <font>
+            <Font name="Monospaced Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.TextArea?>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #666666" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TrackDetails">
+   <children><ImageView fx:id="returnButton" fitHeight="51.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="trackImage" fitHeight="618.0" fitWidth="750.0" layoutX="34.0" layoutY="67.0" pickOnBounds="true" preserveRatio="false" />
+      <ImageView fx:id="nextImage" fitHeight="618.0" fitWidth="31.0" layoutX="753.0" layoutY="67.0" onMouseClicked="#nextPicture" opacity="0.5" pickOnBounds="true" preserveRatio="false" />
+      <ImageView fx:id="previousImage" fitHeight="618.0" fitWidth="31.0" layoutX="34.0" layoutY="67.0" onMouseClicked="#previousPicture" opacity="0.5" pickOnBounds="true" preserveRatio="false" />
+      <Label text="Label" />
+      <Label layoutX="802.0" layoutY="65.0" text="Kraj: ">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackCountry" layoutX="860.0" layoutY="65.0" text="{$kraj}">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="802.0" layoutY="115.0" text="Miasto: ">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackCity" layoutX="881.0" layoutY="115.0" text="{$miasto}">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="166.0" text="Dlugosc: ">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackLenght" layoutX="892.0" layoutY="166.0" text="{$dlugosc}">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="216.0" text="Data otwarcia:">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackData" layoutX="955.0" layoutY="216.0" text="{data}">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="263.0" text="Rekord toru:">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackRecord" layoutX="941.0" layoutY="263.0" text="{$rekord}">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="313.0" text="Opis toru:">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="trackDesc" layoutX="922.0" layoutY="313.0" prefHeight="384.0" prefWidth="313.0" text="{$miasto}" wrapText="true">
+         <font>
+            <Font name="Monospaced Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
